@@ -1,4 +1,5 @@
 #board {
     display: flex;
     flex-wrap: wrap;
+    width: 480px;
 }
