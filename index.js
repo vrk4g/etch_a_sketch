@@ -23,11 +23,11 @@ function createField(fieldSize) {
             if (square.style.backgroundColor) {
                 const rgbParams = square.style.backgroundColor.replace("rgb(", "").replace(")", "").split(",");
 
-                const red = Math.floor(Number(rgbParams[0]) + Number(rgbParams[0] / 100 * 10));
-                const green = Math.floor(Number(rgbParams[1]) + Number(rgbParams[1] / 100 * 10));
-                const blue = Math.floor(Number(rgbParams[2]) + Number(rgbParams[2] / 100 * 10));
+                const red = Math.floor(Number(rgbParams[0]) - Number(rgbParams[0] / 100 * 10));
+                const green = Math.floor(Number(rgbParams[1]) - Number(rgbParams[1] / 100 * 10));
+                const blue = Math.floor(Number(rgbParams[2]) - Number(rgbParams[2] / 100 * 10));
                 
-                square.style.backgroundColor = `rgb(${red > 255 ? 255 : red}, ${green > 255 ? 255 : green}, ${blue > 255 ? 255 : blue})`;
+                square.style.backgroundColor = `rgb(${red < 0 ? 0 : red}, ${green < 0 ? 0 : green}, ${blue < 0 ? 0 : blue})`;
                 
             } else {
                 square.style.backgroundColor = `rgb(${rgb()}, ${rgb()}, ${rgb()})`;
