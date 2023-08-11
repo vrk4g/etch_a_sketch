@@ -20,7 +20,16 @@ function createField(fieldSize) {
         square.addEventListener("mouseover", event => {
             const rgb = () => Math.floor(Math.random() * 256);
 
-            if (!square.style.backgroundColor) {
+            if (square.style.backgroundColor) {
+                const rgbParams = square.style.backgroundColor.replace("rgb(", "").replace(")", "").split(",");
+
+                const red = Math.floor(Number(rgbParams[0]) + Number(rgbParams[0] / 100 * 10));
+                const green = Math.floor(Number(rgbParams[1]) + Number(rgbParams[1] / 100 * 10));
+                const blue = Math.floor(Number(rgbParams[2]) + Number(rgbParams[2] / 100 * 10));
+                
+                square.style.backgroundColor = `rgb(${red > 255 ? 255 : red}, ${green > 255 ? 255 : green}, ${blue > 255 ? 255 : blue})`;
+                
+            } else {
                 square.style.backgroundColor = `rgb(${rgb()}, ${rgb()}, ${rgb()})`;
             }
         });
