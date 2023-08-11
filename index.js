@@ -18,7 +18,11 @@ function createField(fieldSize) {
     // mousedown -> +mouseover -> mouseup -> -mouseover = more precise sketching
     for (const square of squares) {
         square.addEventListener("mouseover", event => {
-            square.style["background-color"] = "#000000";
+            const rgb = () => Math.floor(Math.random() * 256);
+
+            if (!square.style.backgroundColor) {
+                square.style.backgroundColor = `rgb(${rgb()}, ${rgb()}, ${rgb()})`;
+            }
         });
     }
 }
